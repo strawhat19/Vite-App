@@ -1,12 +1,10 @@
-import { useState } from 'react';
 import viteLogo from '../../assets/vite.svg';
 import reactLogo from '../../assets/react.svg';
 
-const Home: React.FC<any> = () => { 
-    const [count, setCount] = useState(0);
+const Contact: React.FC<any> = () => { 
 
     return (
-        <div className='home'>
+        <div className='contact'>
             <div>
                 <a href="https://vitejs.dev" target="_blank">
                     <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -15,14 +13,9 @@ const Home: React.FC<any> = () => {
                     <img src={reactLogo} className="logo react" alt="React logo" />
                 </a>
             </div>
-            <h1>Home</h1>
-            <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>
-                    Count is {count}
-                </button>
-            </div>
+            <h1>Contact</h1>
         </div>
     )
 }
 
-export default Home
+export default Contact

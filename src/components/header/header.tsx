@@ -32,7 +32,7 @@ const Header: React.FC<any> = () => {
                         <a className="hoverLink" href="./about">About</a>
                     </li>
                     <li className="navigation-tab">
-                        <a className="current active hoverLink" href="./portfolio">Portfolio</a>
+                        <a className="current active hoverLink" href="./projects">Projects</a>
                     </li>
                     <li className="navigation-tab">
                         <a className="hoverLink" href="./contact">Contact</a>
