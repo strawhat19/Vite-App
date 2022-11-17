@@ -7,7 +7,7 @@ function App() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    console.log(`Vite React w/ Logos`);
+    console.log(`Vite React`);
   }, [])
 
   return (
