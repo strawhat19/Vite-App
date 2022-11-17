@@ -1,7 +1,36 @@
+/* Montserrat */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* Caveat */
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap");
+
 :root {
+    --bg: #1f1f1f;
+    --posterH: 250px;
+    --posterW: 165px;
+    --main: #ff1c0b;
     --steel: #7a7a7a;
+    --silver: #f2f2f2;
+    --softBlack: #1a1a1a;
+    --secondary: #3c3c3c;
+    --piratechs: #2b4261;
+    --softBlack2: #636363;
+    --authGlass: rgba(0, 0, 0, 0.05);
+    --blackGlass: rgba(0, 0, 0, 0.75);
+    --silverGlass: rgba(0, 0, 0, 0.35);
+    --mainGlass: rgba(255, 28, 11, 0.75);
+    --softWhite: rgba(255, 255, 255, 0.87);
+    --transition: 0.24s cubic-bezier(0.77, 0.2, 0.05, 1) !important;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat" !important;
 }
 
 body {
+    height: 100vh;
     background: var(--steel);
 }
