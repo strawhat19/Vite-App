@@ -6,7 +6,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 const Header: React.FC<any> = () => {
 
     const [show, setShow] = useState<any>(false);
-    const transitionHeader = () => window.scrollY > 100 ? setShow(true) : setShow(false);
+    const transitionHeader = () => window.scrollY > 0 ? setShow(true) : setShow(false);
 
     useEffect(() => {
         window.addEventListener(`scroll`, event => {

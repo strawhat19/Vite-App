@@ -1,5 +1,6 @@
 header {
     top: 0;
+    height: 12%;
     width: 100%;
     z-index: 100;
     display: flex;
@@ -184,8 +185,9 @@ header {
   }
   
   .scrolledHeader {
-    background: var(--blackGlass);
+    height: 10%;
     backdrop-filter: blur(5px);
+    transition: var(--transition);
     .customAvatar {
       color: var(--bg) !important;
       background: var(--silver) !important;
