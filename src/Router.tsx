@@ -9,11 +9,11 @@ import './global.scss';
 import './App.css';
 
 const Router = () => {
-  const [aboutPaths, setAboutPaths] = useState([`about`]);
-  const [homePaths, setHomePaths] = useState([``, `home`]);
   const [pagename, setPagename] = useState(window.location.pathname.replace(`/vite-app/`, ``));
-  const [projectPaths, setProjectPaths] = useState([`projects`, `portfolio`, `resume`, `experience`]);
-  const [contactPaths, setContactPaths] = useState([`contact`, `contact-us`, `contactus`, `contactme`, `contact-me`]);
+  const [aboutPaths, setAboutPaths] = useState([`about`, `/vite-app/about`, `/Vite-App/about`]);
+  const [homePaths, setHomePaths] = useState([``, `home`, `/Vite-App/`, `/Vite-App/home`, `/vite-app/`]);
+  const [projectPaths, setProjectPaths] = useState([`projects`, `portfolio`, `resume`, `experience`, `/Vite-App/projects`]);
+  const [contactPaths, setContactPaths] = useState([`contact`, `contact-us`, `contactus`, `contactme`, `contact-me`, `/Vite-App/contact`]);
 
   useEffect(() => {
     console.log(`Vite React`, pagename);
