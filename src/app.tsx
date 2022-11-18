@@ -7,6 +7,7 @@ import reactLogo from './assets/react.svg';
 import About from './about/about';
 import viteLogo from '/vite.svg';
 import './global.scss';
+import Icons from './components/icons/icons';
 
 const App = () => {
   let [show, setShow] = useState(false);
@@ -75,14 +76,7 @@ const App = () => {
         </div>
       </header>
       <div className="App" id="App">
-        <div>
-            <a href="https://vitejs.dev" target="_blank">
-                <LazyLoadImage effect="blur" src={viteLogo} id={`logo`} className={`logo`} alt={`Vite logo`} width={`auto`} height={`9em`} />
-            </a>
-            <a href="https://reactjs.org" target="_blank">
-                <LazyLoadImage effect="blur" src={reactLogo} id={`logo`} className={`logo react`} alt={`React logo`} width={`auto`} height={`9em`} />
-            </a>
-        </div>
+        <Icons />
         {homePaths.includes(pagename) && (
           <div className='home'>
               <h1>Home</h1>

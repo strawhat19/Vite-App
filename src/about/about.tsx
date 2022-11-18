@@ -1,5 +1,6 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Suspense, useEffect, useState } from 'react';
+import Icons from '../components/icons/icons';
 import viteLogo from '/vite.svg';
 import '../global.scss';
 
@@ -45,6 +46,7 @@ const About = () => {
           </div>
         </header>
       }
+      {mode == `production` && <Icons />}
       <h1>About</h1>
     </Suspense>
   )

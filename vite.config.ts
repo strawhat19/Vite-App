@@ -16,6 +16,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         home: resolve(root, `index.html`),
+        about: resolve(root, `about`, `index.html`),
         piratechs: resolve(root, `piratechs`, `index.html`)
       }
     }
