@@ -15,9 +15,11 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        home: resolve(root, `index.html`),
+        app: resolve(root, `index.html`),
         about: resolve(root, `about`, `index.html`),
-        piratechs: resolve(root, `piratechs`, `index.html`)
+        projects: resolve(root, `projects`, `index.html`),
+        contact: resolve(root, `contact`, `index.html`),
+        piratechs: resolve(root, `piratechs`, `index.html`),
       }
     }
   }

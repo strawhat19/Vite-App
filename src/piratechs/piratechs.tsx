@@ -9,11 +9,19 @@ const Piratechs = () => {
   let [updateTimer, setUpdateTimer] = useState(0);
   let [pageChanged, setPageChanged] = useState(false);
   let [mode, setMode] = useState(import.meta.env.MODE);
+  let transitionHeader = () => window.scrollY > 0 ? setShow(true) : setShow(false);
   
   useEffect(() => {
     if (updateTimer == 0 || pageChanged) {
       setUpdateTimer(updateTimer++);
     }
+
+    window.addEventListener(`scroll`, event => {
+      transitionHeader();
+      return () => window.removeEventListener(`scroll`, event => {
+          transitionHeader();
+      })
+    });
   }, [updateTimer, setUpdateTimer]);
 
   return (

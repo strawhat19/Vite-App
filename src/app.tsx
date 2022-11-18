@@ -1,17 +1,15 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Suspense, useEffect, useState } from 'react';
-import Projects from './components/projects/projects';
-import Contact from './components/contact/contact';
 import Piratechs from './piratechs/piratechs';
-import reactLogo from './assets/react.svg';
+import Icons from './components/icons/icons';
+import Projects from './projects/projects';
+import Contact from './contact/contact';
 import About from './about/about';
 import viteLogo from '/vite.svg';
 import './global.scss';
-import Icons from './components/icons/icons';
 
 const App = () => {
   let [show, setShow] = useState(false);
-  let [state, setState] = useState<any>({});
   let [updateTimer, setUpdateTimer] = useState(0);
   let [pageChanged, setPageChanged] = useState(false);
   let [mode, setMode] = useState(import.meta.env.MODE);
@@ -44,7 +42,7 @@ const App = () => {
       return () => window.removeEventListener(`scroll`, event => {
           transitionHeader();
       })
-    })
+    });
   }, [updateTimer, setUpdateTimer]);
 
   return (
@@ -63,10 +61,10 @@ const App = () => {
                         <a className="hoverLink" href="./about" onClick={(e) => (devEnv || mode == `development`) && navigateTo(`about`, e)}>About</a>
                     </li>
                     <li className="navigation-tab">
-                        <a className="hoverLink" href="./projects" onClick={(e) => navigateTo(`projects`, e)}>Projects</a>
+                        <a className="hoverLink" href="./projects" onClick={(e) => (devEnv || mode == `development`) && navigateTo(`projects`, e)}>Projects</a>
                     </li>
                     <li className="navigation-tab">
-                        <a className="hoverLink" href="./contact"  onClick={(e) => navigateTo(`contact`, e)}>Contact</a>
+                        <a className="hoverLink" href="./contact"  onClick={(e) => (devEnv || mode == `development`) && navigateTo(`contact`, e)}>Contact</a>
                     </li>
                     <li className="navigation-tab">
                         <a className="hoverLink" href="./piratechs" onClick={(e) => (devEnv || mode == `development`) && navigateTo(`piratechs`, e)}>Piratechs</a>

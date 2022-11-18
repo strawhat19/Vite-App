@@ -4,7 +4,7 @@ import Icons from '../components/icons/icons';
 import viteLogo from '/vite.svg';
 import '../global.scss';
 
-const About = () => {
+const Contact = () => {
   let [show, setShow] = useState(false);
   let [updateTimer, setUpdateTimer] = useState(0);
   let [pageChanged, setPageChanged] = useState(false);
@@ -55,9 +55,9 @@ const About = () => {
         </header>
       }
       {mode == `production` && <Icons />}
-      <h1>About</h1>
+      <h1>Contact</h1>
     </Suspense>
   )
 }
 
-export default About
+export default Contact
