@@ -1,9 +1,8 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-// import { Route, Routes, useRoutes } from 'react-router';
+import { Suspense, useEffect, useState } from 'react';
 import Projects from './components/projects/projects';
 import Contact from './components/contact/contact';
 import About from './components/about/about';
-import { useEffect, useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from './assets/vite.svg';
 import './global.scss';
@@ -18,6 +17,13 @@ const Home = () => {
   const [homePaths, setHomePaths] = useState([``, `home`, `/Vite-App/`, `/Vite-App/home`, `/vite-app/`]);
   const [projectPaths, setProjectPaths] = useState([`projects`, `portfolio`, `resume`, `experience`, `/Vite-App/projects`]);
   const [contactPaths, setContactPaths] = useState([`contact`, `contact-us`, `contactus`, `contactme`, `contact-me`, `/Vite-App/contact`]);
+
+  const navigateTo = (e:any, page:any) => {
+    e.preventDefault();
+    window.history.pushState({}, ``, page);
+    setUpdateTimer((updateTimer) => updateTimer + 1);
+    setPagename(window.location.pathname.replace(`/vite-app/`, ``));
+  }
   
   useEffect(() => {
 
@@ -28,50 +34,33 @@ const Home = () => {
       })
     })
 
+    devEnv && pagename != `` && console.log(pagename);
     if (updateTimer == 0) {
-      console.log(window.history);
-      console.log(window.location);
-      devEnv && pagename != `` && console.log(pagename);
       setUpdateTimer(updateTimer++);
     }
 
   }, [updateTimer, setUpdateTimer]);
 
   return (
-    <>
+    <Suspense>
       <header className={show ? `scrolledHeader` : `topHeader`}>
         <div className="inner">
-            <div className="navigation navigationLeft">
+            <div className="navigation">
                 <a title="Home" className="homeLink" href="./">
-                    <LazyLoadImage effect="blur" src={viteLogo} id={`logo`} className="logo" alt={`logo`} width={`100px`} height={`auto`} />
+                    <LazyLoadImage effect="blur" src={viteLogo} id={`logo`} className={`logo`} alt={`logo`} width={`100px`} height={`auto`} />
                 </a>
                 <ul>
                     <li className="navigation-tab">
                         <a className="current active hoverLink" href="./">Home</a>
                     </li>
                     <li className="navigation-tab">
-                        <a className="hoverLink" href="./about" onClick={(e) => {
-                            e.preventDefault();
-                            window.history.pushState({}, ``, `about`);
-                            setUpdateTimer((updateTimer) => updateTimer + 1);
-                            setPagename(window.location.pathname.replace(`/vite-app/`, ``));
-                        }}>About</a>
+                        <a className="hoverLink" href="./about" onClick={(e) => navigateTo(e, `about`)}>About</a>
                     </li>
                     <li className="navigation-tab">
-                        <a className="current active hoverLink" href="./projects" onClick={(e) => {
-                            e.preventDefault();
-                            window.history.pushState({}, ``, `projects`);
-                            setUpdateTimer((updateTimer) => updateTimer + 1);
-                            setPagename(window.location.pathname.replace(`/vite-app/`, ``));
-                        }}>Projects</a>
+                        <a className="hoverLink" href="./projects" onClick={(e) => navigateTo(e, `projects`)}>Projects</a>
                     </li>
                     <li className="navigation-tab">
-                        <a className="hoverLink" href="./contact"  onClick={(e) => {
-                            e.preventDefault();
-                            window.history.pushState({}, ``, `contact`);
-                            setUpdateTimer((updateTimer) => updateTimer + 1);
-                            setPagename(window.location.pathname.replace(`/vite-app/`, ``));
-                        }}>Contact</a>
+                        <a className="hoverLink" href="./contact"  onClick={(e) => navigateTo(e, `contact`)}>Contact</a>
                     </li>
                     <li className="navigation-tab">
                         <a className="hoverLink" href="./piratechs">Piratechs</a>
@@ -83,10 +72,10 @@ const Home = () => {
       <div className="App" id="App">
         {pagename != `piratechs` && <div>
             <a href="https://vitejs.dev" target="_blank">
-                <img src={viteLogo} className="logo" alt="Vite logo" />
+                <LazyLoadImage effect="blur" src={viteLogo} id={`logo`} className={`logo`} alt={`Vite logo`} width={`auto`} height={`9em`} />
             </a>
             <a href="https://reactjs.org" target="_blank">
-                <img src={reactLogo} className="logo react" alt="React logo" />
+                <LazyLoadImage effect="blur" src={reactLogo} id={`logo`} className={`logo react`} alt={`React logo`} width={`auto`} height={`9em`} />
             </a>
         </div>}
         {homePaths.includes(pagename) && (
@@ -105,7 +94,7 @@ const Home = () => {
           </div>
         }
       </div>
-    </>
+    </Suspense>
   )
 }
 
