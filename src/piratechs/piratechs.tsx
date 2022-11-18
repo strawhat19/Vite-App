@@ -1,6 +1,3 @@
-// import * as React from 'react';
-// import * as ReactDOM from 'react-dom';
-// // import * as ReactDOM from 'react-dom/client';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Suspense, useEffect, useState } from 'react';
 import viteLogo from '/vite.svg';
@@ -23,7 +20,6 @@ const Piratechs = () => {
   
   useEffect(() => {
     if (updateTimer == 0 || pageChanged) {
-      console.log(`PIRATECHS`);
       setUpdateTimer(updateTimer++);
     }
   }, [updateTimer, setUpdateTimer]);
@@ -42,16 +38,16 @@ const Piratechs = () => {
                           <a className="current active hoverLink" href="./">Home</a>
                       </li>
                       <li className="navigation-tab">
-                          <a className="hoverLink" href="./about" onClick={(e) => navigateTo(`about`, e)}>About</a>
+                          <a className="hoverLink" href="/about" onClick={(e) => navigateTo(`about`, e)}>About</a>
                       </li>
                       <li className="navigation-tab">
-                          <a className="hoverLink" href="./projects" onClick={(e) => navigateTo(`projects`, e)}>Projects</a>
+                          <a className="hoverLink" href="/projects" onClick={(e) => navigateTo(`projects`, e)}>Projects</a>
                       </li>
                       <li className="navigation-tab">
-                          <a className="hoverLink" href="./contact"  onClick={(e) => navigateTo(`contact`, e)}>Contact</a>
+                          <a className="hoverLink" href="/contact"  onClick={(e) => navigateTo(`contact`, e)}>Contact</a>
                       </li>
                       <li className="navigation-tab">
-                          <a className="hoverLink" href="./piratechs" onClick={(e) => mode == `development` && navigateTo(`piratechs`, e)}>Piratechs</a>
+                          <a className="hoverLink" href="/piratechs" onClick={(e) => mode == `development` && navigateTo(`piratechs`, e)}>Piratechs</a>
                       </li>
                   </ul>
               </div>
@@ -71,22 +67,3 @@ const Piratechs = () => {
 }
 
 export default Piratechs
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <Piratechs />
-//   </React.StrictMode>,
-//   document.getElementById('root') as HTMLElement
-// )
-
-// ReactDOM.createRoot(document.getElementById('App') as HTMLElement).render(
-//   <React.StrictMode>
-//     <Piratechs />
-//   </React.StrictMode>
-// )
-
-// ReactDOM.hydrateRoot(document.getElementById('App') as HTMLElement, 
-//   <React.StrictMode>
-//     <Piratechs />
-//   </React.StrictMode>
-// )

@@ -14,6 +14,7 @@ const App = () => {
   let [updateTimer, setUpdateTimer] = useState(0);
   let [pageChanged, setPageChanged] = useState(false);
   let [mode, setMode] = useState(import.meta.env.MODE);
+  let [devEnv, setDevEnv] = useState(window.location.hostname.includes(`0`));
   let transitionHeader = () => window.scrollY > 0 ? setShow(true) : setShow(false);
   let [pagename, setPageName] = useState(window.location.pathname.replace(`/vite-app/`, ``));
   let [aboutPaths, setAboutPaths] = useState([`about`, `/vite-app/about`, `/Vite-App/about`]);
@@ -31,7 +32,12 @@ const App = () => {
   }
   
   useEffect(() => {
-    if (updateTimer == 0 || pageChanged) setUpdateTimer(updateTimer++);
+    if (updateTimer == 0 || pageChanged) {
+      setUpdateTimer(updateTimer++);
+      if (devEnv || mode == `development`) document.title = `Vite App Dev`;
+      if (devEnv && mode == `production`) document.title = `Vite App Build`;
+    };
+    
     window.addEventListener(`scroll`, event => {
       transitionHeader();
       return () => window.removeEventListener(`scroll`, event => {
@@ -62,7 +68,7 @@ const App = () => {
                         <a className="hoverLink" href="./contact"  onClick={(e) => navigateTo(`contact`, e)}>Contact</a>
                     </li>
                     <li className="navigation-tab">
-                        <a className="hoverLink" href="./piratechs" onClick={(e) => mode == `development` && navigateTo(`piratechs`, e)}>Piratechs</a>
+                        <a className="hoverLink" href="./piratechs" onClick={(e) => (devEnv || mode == `development`) && navigateTo(`piratechs`, e)}>Piratechs</a>
                     </li>
                 </ul>
             </div>
