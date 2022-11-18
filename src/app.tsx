@@ -3,8 +3,8 @@ import { Suspense, useEffect, useState } from 'react';
 import Projects from './components/projects/projects';
 import Contact from './components/contact/contact';
 import Piratechs from './piratechs/piratechs';
-import About from './components/about/about';
 import reactLogo from './assets/react.svg';
+import About from './about/about';
 import viteLogo from '/vite.svg';
 import './global.scss';
 
@@ -59,7 +59,7 @@ const App = () => {
                         <a className="current active hoverLink" href="./">Home</a>
                     </li>
                     <li className="navigation-tab">
-                        <a className="hoverLink" href="./about" onClick={(e) => navigateTo(`about`, e)}>About</a>
+                        <a className="hoverLink" href="./about" onClick={(e) => (devEnv || mode == `development`) && navigateTo(`about`, e)}>About</a>
                     </li>
                     <li className="navigation-tab">
                         <a className="hoverLink" href="./projects" onClick={(e) => navigateTo(`projects`, e)}>Projects</a>
@@ -75,16 +75,14 @@ const App = () => {
         </div>
       </header>
       <div className="App" id="App">
-        {pagename != `piratechs` && 
-          <div>
-              <a href="https://vitejs.dev" target="_blank">
-                  <LazyLoadImage effect="blur" src={viteLogo} id={`logo`} className={`logo`} alt={`Vite logo`} width={`auto`} height={`9em`} />
-              </a>
-              <a href="https://reactjs.org" target="_blank">
-                  <LazyLoadImage effect="blur" src={reactLogo} id={`logo`} className={`logo react`} alt={`React logo`} width={`auto`} height={`9em`} />
-              </a>
-          </div>
-        }
+        <div>
+            <a href="https://vitejs.dev" target="_blank">
+                <LazyLoadImage effect="blur" src={viteLogo} id={`logo`} className={`logo`} alt={`Vite logo`} width={`auto`} height={`9em`} />
+            </a>
+            <a href="https://reactjs.org" target="_blank">
+                <LazyLoadImage effect="blur" src={reactLogo} id={`logo`} className={`logo react`} alt={`React logo`} width={`auto`} height={`9em`} />
+            </a>
+        </div>
         {homePaths.includes(pagename) && (
           <div className='home'>
               <h1>Home</h1>
@@ -94,13 +92,11 @@ const App = () => {
         {projectPaths.includes(pagename) && <Projects />}
         {contactPaths.includes(pagename) && <Contact />}
         {piratechsPaths.includes(pagename) && <Piratechs />}
-        {pagename != `piratechs` && 
-          <div className="spacer">
-              <button onClick={(e) => setUpdateTimer((updateTimer) => updateTimer + 1)}>
-                  {updateTimer != 0 ? `State changed ${updateTimer} times` : `State reset to ${updateTimer}`}
-              </button>
-          </div>
-        }
+        <div className="spacer">
+            <button onClick={(e) => setUpdateTimer((updateTimer) => updateTimer + 1)}>
+                {updateTimer != 0 ? `State changed ${updateTimer} times` : `State reset to ${updateTimer}`}
+            </button>
+        </div>
       </div>
     </Suspense>
   )

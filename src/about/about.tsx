@@ -3,7 +3,7 @@ import { Suspense, useEffect, useState } from 'react';
 import viteLogo from '/vite.svg';
 import '../global.scss';
 
-const Piratechs = () => {
+const About = () => {
   let [show, setShow] = useState(false);
   let [updateTimer, setUpdateTimer] = useState(0);
   let [pageChanged, setPageChanged] = useState(false);
@@ -45,9 +45,9 @@ const Piratechs = () => {
           </div>
         </header>
       }
-      <h1>Piratechs</h1>
+      <h1>About</h1>
     </Suspense>
   )
 }
 
-export default Piratechs
+export default About
