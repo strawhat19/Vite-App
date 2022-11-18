@@ -4,25 +4,27 @@ import Projects from './components/projects/projects';
 import Contact from './components/contact/contact';
 import About from './components/about/about';
 import reactLogo from './assets/react.svg';
-import viteLogo from './assets/vite.svg';
+import viteLogo from '/vite.svg';
 import './global.scss';
 
 const Home = () => {
-  const [show, setShow] = useState(false);
+  let [show, setShow] = useState(false);
   let [updateTimer, setUpdateTimer] = useState(0);
-  const [devEnv, setDevenv] = useState(window.location.hostname.includes(`0`));
-  const transitionHeader = () => window.scrollY > 0 ? setShow(true) : setShow(false);
-  const [pagename, setPagename] = useState(window.location.pathname.replace(`/vite-app/`, ``));
-  const [aboutPaths, setAboutPaths] = useState([`about`, `/vite-app/about`, `/Vite-App/about`]);
-  const [homePaths, setHomePaths] = useState([``, `home`, `/Vite-App/`, `/Vite-App/home`, `/vite-app/`]);
-  const [projectPaths, setProjectPaths] = useState([`projects`, `portfolio`, `resume`, `experience`, `/Vite-App/projects`]);
-  const [contactPaths, setContactPaths] = useState([`contact`, `contact-us`, `contactus`, `contactme`, `contact-me`, `/Vite-App/contact`]);
+  let [pageChanged, setPageChanged] = useState(false);
+  let [mode, setMode] = useState(import.meta.env.MODE);
+  let transitionHeader = () => window.scrollY > 0 ? setShow(true) : setShow(false);
+  let [pagename, setPageName] = useState(window.location.pathname.replace(`/vite-app/`, ``));
+  let [aboutPaths, setAboutPaths] = useState([`about`, `/vite-app/about`, `/Vite-App/about`]);
+  let [homePaths, setHomePaths] = useState([``, `home`, `/Vite-App/`, `/Vite-App/home`, `/vite-app/`]);
+  let [projectPaths, setProjectPaths] = useState([`projects`, `portfolio`, `resume`, `experience`, `/Vite-App/projects`]);
+  let [contactPaths, setContactPaths] = useState([`contact`, `contact-us`, `contactus`, `contactme`, `contact-me`, `/Vite-App/contact`]);
 
-  const navigateTo = (e:any, page:any) => {
-    e.preventDefault();
+  let navigateTo = (page:any, clickEvent:any) => {
+    clickEvent.preventDefault();
     window.history.pushState({}, ``, page);
+    updateTimer != 0 && setPageChanged(true);
     setUpdateTimer((updateTimer) => updateTimer + 1);
-    setPagename(window.location.pathname.replace(`/vite-app/`, ``));
+    setPageName(window.location.pathname.replace(`/vite-app/`, ``));
   }
   
   useEffect(() => {
@@ -34,8 +36,8 @@ const Home = () => {
       })
     })
 
-    devEnv && pagename != `` && console.log(pagename);
-    if (updateTimer == 0) {
+    if (updateTimer == 0 || pageChanged) {
+      console.log(`mode`, mode);
       setUpdateTimer(updateTimer++);
     }
 
@@ -54,13 +56,13 @@ const Home = () => {
                         <a className="current active hoverLink" href="./">Home</a>
                     </li>
                     <li className="navigation-tab">
-                        <a className="hoverLink" href="./about" onClick={(e) => navigateTo(e, `about`)}>About</a>
+                        <a className="hoverLink" href="./about" onClick={(e) => navigateTo(`about`, e)}>About</a>
                     </li>
                     <li className="navigation-tab">
-                        <a className="hoverLink" href="./projects" onClick={(e) => navigateTo(e, `projects`)}>Projects</a>
+                        <a className="hoverLink" href="./projects" onClick={(e) => navigateTo(`projects`, e)}>Projects</a>
                     </li>
                     <li className="navigation-tab">
-                        <a className="hoverLink" href="./contact"  onClick={(e) => navigateTo(e, `contact`)}>Contact</a>
+                        <a className="hoverLink" href="./contact"  onClick={(e) => navigateTo(`contact`, e)}>Contact</a>
                     </li>
                     <li className="navigation-tab">
                         <a className="hoverLink" href="./piratechs">Piratechs</a>
