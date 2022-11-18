@@ -2,6 +2,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Suspense, useEffect, useState } from 'react';
 import Projects from './components/projects/projects';
 import Contact from './components/contact/contact';
+import Piratechs from './piratechs/piratechs';
 import About from './components/about/about';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
@@ -17,6 +18,7 @@ const App = () => {
   let [pagename, setPageName] = useState(window.location.pathname.replace(`/vite-app/`, ``));
   let [aboutPaths, setAboutPaths] = useState([`about`, `/vite-app/about`, `/Vite-App/about`]);
   let [homePaths, setHomePaths] = useState([``, `home`, `/Vite-App/`, `/Vite-App/home`, `/vite-app/`]);
+  let [piratechsPaths, setPiratechsPaths] = useState([`piratechs`, `piratechs/`, `/Vite-App/piratechs`]);
   let [projectPaths, setProjectPaths] = useState([`projects`, `portfolio`, `resume`, `experience`, `/Vite-App/projects`]);
   let [contactPaths, setContactPaths] = useState([`contact`, `contact-us`, `contactus`, `contactme`, `contact-me`, `/Vite-App/contact`]);
 
@@ -60,7 +62,7 @@ const App = () => {
                         <a className="hoverLink" href="./contact"  onClick={(e) => navigateTo(`contact`, e)}>Contact</a>
                     </li>
                     <li className="navigation-tab">
-                        <a className="hoverLink" href="./piratechs">Piratechs</a>
+                        <a className="hoverLink" href="./piratechs" onClick={(e) => mode == `development` && navigateTo(`piratechs`, e)}>Piratechs</a>
                     </li>
                 </ul>
             </div>
@@ -85,6 +87,7 @@ const App = () => {
         {aboutPaths.includes(pagename) && <About />}
         {projectPaths.includes(pagename) && <Projects />}
         {contactPaths.includes(pagename) && <Contact />}
+        {piratechsPaths.includes(pagename) && <Piratechs />}
         {pagename != `piratechs` && 
           <div className="spacer">
               <button onClick={(e) => setUpdateTimer((updateTimer) => updateTimer + 1)}>
