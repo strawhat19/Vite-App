@@ -1,12 +1,19 @@
 # Vite App
 
-[![License Badge: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 ![example event parameter](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?event=push)
+[![Build Status](https://travis-ci.org/strawhat19/Vite-App.svg?branch=gh-pages)](https://github.com/strawhat19/Vite-App)
+[![License Badge: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
 
 ![Screenshot of Application](./src/assets/v1.0.png)
 
 ## About
-A simple app made with Vite, React, TypeScript, and SASS. Still trying to figure out proper routing with Vite and React, I got the Piratechs route working so you can go to /piratechs, but not the other pages. 
+A simple app made with Vite, React, TypeScript, and SASS. Still trying to figure out proper routing with Vite and React, I got the Piratechs route working so you can go to /piratechs, but not the other pages. Will implement a firebase db soon.
 
 ## Table of Contents  
 * [About](#about)

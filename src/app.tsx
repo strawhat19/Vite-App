@@ -7,8 +7,9 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './global.scss';
 
-const Home = () => {
+const App = () => {
   let [show, setShow] = useState(false);
+  let [state, setState] = useState<any>({});
   let [updateTimer, setUpdateTimer] = useState(0);
   let [pageChanged, setPageChanged] = useState(false);
   let [mode, setMode] = useState(import.meta.env.MODE);
@@ -28,19 +29,13 @@ const Home = () => {
   }
   
   useEffect(() => {
-
+    if (updateTimer == 0 || pageChanged) setUpdateTimer(updateTimer++);
     window.addEventListener(`scroll`, event => {
       transitionHeader();
       return () => window.removeEventListener(`scroll`, event => {
           transitionHeader();
       })
     })
-
-    if (updateTimer == 0 || pageChanged) {
-      console.log(`mode`, mode);
-      setUpdateTimer(updateTimer++);
-    }
-
   }, [updateTimer, setUpdateTimer]);
 
   return (
@@ -72,14 +67,16 @@ const Home = () => {
         </div>
       </header>
       <div className="App" id="App">
-        {pagename != `piratechs` && <div>
-            <a href="https://vitejs.dev" target="_blank">
-                <LazyLoadImage effect="blur" src={viteLogo} id={`logo`} className={`logo`} alt={`Vite logo`} width={`auto`} height={`9em`} />
-            </a>
-            <a href="https://reactjs.org" target="_blank">
-                <LazyLoadImage effect="blur" src={reactLogo} id={`logo`} className={`logo react`} alt={`React logo`} width={`auto`} height={`9em`} />
-            </a>
-        </div>}
+        {pagename != `piratechs` && 
+          <div>
+              <a href="https://vitejs.dev" target="_blank">
+                  <LazyLoadImage effect="blur" src={viteLogo} id={`logo`} className={`logo`} alt={`Vite logo`} width={`auto`} height={`9em`} />
+              </a>
+              <a href="https://reactjs.org" target="_blank">
+                  <LazyLoadImage effect="blur" src={reactLogo} id={`logo`} className={`logo react`} alt={`React logo`} width={`auto`} height={`9em`} />
+              </a>
+          </div>
+        }
         {homePaths.includes(pagename) && (
           <div className='home'>
               <h1>Home</h1>
@@ -90,7 +87,7 @@ const Home = () => {
         {contactPaths.includes(pagename) && <Contact />}
         {pagename != `piratechs` && 
           <div className="spacer">
-              <button onClick={() => setUpdateTimer((updateTimer) => updateTimer + 1)}>
+              <button onClick={(e) => setUpdateTimer((updateTimer) => updateTimer + 1)}>
                   {updateTimer != 0 ? `State changed ${updateTimer} times` : `State reset to ${updateTimer}`}
               </button>
           </div>
@@ -100,4 +97,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default App
