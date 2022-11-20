@@ -73,9 +73,9 @@ const App = () => {
                 </ul>
             </div>
         </div>
-        <Banner />
       </header>
-      <div className="App" id="App">
+      <Banner />
+      <main className="App content" id="App">
         <Icons />
         {homePaths.includes(pagename) && (
           <div className='home'>
@@ -91,7 +91,7 @@ const App = () => {
                 {updateTimer != 0 ? `State changed ${updateTimer} times` : `State reset to ${updateTimer}`}
             </button>
         </div>
-      </div>
+      </main>
     </Suspense>
   )
 }

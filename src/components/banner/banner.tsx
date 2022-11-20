@@ -6,7 +6,7 @@ const Banner = () => {
     return (
         <Suspense>
             <div className='banner'>
-                <LazyLoadImage effect="blur" src={bannerImg} id={`bannerImg`} className={`bannerImg`} alt={`Banner`} width={`1600px`} height={`auto`} />
+                <LazyLoadImage effect="blur" src={bannerImg} id={`bannerImg`} className={`bannerImg`} alt={`Banner`} width={`100%`} height={`auto`} />
             </div>
         </Suspense>
     )

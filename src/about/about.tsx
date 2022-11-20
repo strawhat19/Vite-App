@@ -56,8 +56,10 @@ const About = () => {
           <Banner />
         </header>
       }
-      {mode == `production` && <Icons />}
-      <h1>About</h1>
+      <main className={`App${mode == 'production' ? 'content' : ''}`} id="App">
+        {mode == `production` && <Icons />}
+        <h1>About</h1>
+      </main>
     </Suspense>
   )
 }
