@@ -3,6 +3,7 @@ import { Suspense, useEffect, useState } from 'react';
 import Icons from '../components/icons/icons';
 import viteLogo from '/vite.svg';
 import '../global.scss';
+import Banner from '../components/banner/banner';
 
 const Piratechs = () => {
   let [show, setShow] = useState(false);
@@ -52,6 +53,7 @@ const Piratechs = () => {
                   </ul>
               </div>
           </div>
+          <Banner />
         </header>
       }
       {mode == `production` && <Icons />}

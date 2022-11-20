@@ -1,5 +1,6 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Suspense, useEffect, useState } from 'react';
+import Banner from './components/banner/banner';
 import Piratechs from './piratechs/piratechs';
 import Icons from './components/icons/icons';
 import Projects from './projects/projects';
@@ -72,6 +73,7 @@ const App = () => {
                 </ul>
             </div>
         </div>
+        <Banner />
       </header>
       <div className="App" id="App">
         <Icons />
