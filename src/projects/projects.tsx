@@ -12,11 +12,12 @@ enum CustomDate {
 
 const Projects = () => {
   let [show, setShow] = useState(false);
-  let [projects, setProjects] = useState<any>([]);
   let [updateTimer, setUpdateTimer] = useState(0);
   let [pageChanged, setPageChanged] = useState(false);
   let [mode, setMode] = useState(import.meta.env.MODE);
+  let updateProjects = (projects: any) => setProjects(projects);
   let transitionHeader = () => window.scrollY > 0 ? setShow(true) : setShow(false);
+  let [projects, setProjects] = useState<any>(JSON.parse(localStorage.getItem(`user`) as any).projects || []);
 
   function formatDate(date: any) {
     let hours = date.getHours();
@@ -54,24 +55,22 @@ const Projects = () => {
       });
       const user = { name, url: html_url, bio, projects: repositories.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime()), website: blog, avatar: avatar_url, login, repoLink: repos_url, repoNum: public_repos, starred: starred_url, followers, following, lastUpdated: formatDate(new Date()) };
 
-      setProjects(user.projects);
+      updateProjects(user.projects);
       localStorage.setItem(`user`, JSON.stringify(user));
     };
   }
   
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem(`user`) as any) || {};
+    const user = JSON.parse(localStorage.getItem(`user`) as any) || [];
     if (updateTimer == 0 || pageChanged) {
       setUpdateTimer(updateTimer++);
       
-      if (formatDate(new Date()).split(` `)[0] != user.lastUpdated.split(` `)[0]) {
+      if (user.length == 0 || formatDate(new Date()).split(` `)[0] != user.lastUpdated.split(` `)[0]) {
         getGithubData();
+        console.log(`Projects New`, projects);
       } else {
-        if (updateTimer == 0) {
-          setProjects(user.projects);
-          console.log(`Github User`, user);
-          console.log(`Projects`, projects);
-        }
+        console.log(`Github User`, user);
+        console.log(`Projects`, projects);
       };
     }
     
@@ -82,7 +81,7 @@ const Projects = () => {
       })
     });
 
-  }, [updateTimer, setUpdateTimer, projects, setProjects]);
+  }, [updateTimer, setUpdateTimer]);
 
   return (
     <Suspense>
@@ -112,14 +111,14 @@ const Projects = () => {
                   </ul>
               </div>
           </div>
-          <Banner />
         </header>
       }
+      {mode == `production` && <Banner />}
       <main className={`App${mode == 'production' ? 'content' : ''}`} id="App">
         {mode == `production` && <Icons />}
         <h1>Projects</h1>
         <div className="projects">
-          {JSON.parse(localStorage.getItem(`user`) as any).projects.map((project: any, index: any) => {
+          {JSON.parse(localStorage.getItem(`user`) as any).projects.length > 0 && JSON.parse(localStorage.getItem(`user`) as any).projects.map((project: any, index: any) => {
             return (
               <div key={project.name} className="project">
                 <div className="projectHeader">

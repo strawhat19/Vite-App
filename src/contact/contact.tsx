@@ -53,9 +53,9 @@ const Contact = () => {
                   </ul>
               </div>
           </div>
-          <Banner />
         </header>
       }
+      {mode == `production` && <Banner />}
       <main className={`App${mode == 'production' ? 'content' : ''}`} id="App">
         {mode == `production` && <Icons />}
         <h1>Contact</h1>
