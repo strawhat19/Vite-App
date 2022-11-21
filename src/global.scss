@@ -29,8 +29,10 @@
     --sass: #f783ac;
     --sql: #f783ac;
     --mongo: #00684a;
+    --node: #3eb112;
     --git: #e94e31;
     --swift: #f4993a;
+    --discord: #7289DA;
     --bg: #1f1f1f;
     --posterH: 250px;
     --posterW: 165px;
@@ -330,7 +332,9 @@ a {
       }
       .projectContent {
         padding: 2em 0 0;
+        font-weight: 600;
         min-height: 200px;
+        font-size: 0.85em;
       }
       .projectFooter {
         width: 75%;
@@ -360,6 +364,12 @@ a {
           .fa-html5 {
             color: var(--html);
           }
+          .fa-node-js {
+            color: var(--node);
+          }
+          .fa-database {
+            color: pink;
+          }
           .fa-angular {
             color: #dd0031;
           }
@@ -373,6 +383,9 @@ a {
           }
           .fa-css3-alt {
             color: var(--css);
+          }
+          .fa-discord {
+            color: var(--discord);
           }
         }
       }

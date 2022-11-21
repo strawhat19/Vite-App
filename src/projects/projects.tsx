@@ -122,12 +122,12 @@ const Projects = () => {
         <h1>Projects</h1>
         <div className="projects">
           {projects.length > 0 && projects.map((project: any, index: any) => {
-            return (
+            if (project.topics.length > 0) return (
               <div key={project.name} className="project">
                 <div className="projectHeader">
                   <div className="headerTop">
                     <a href={project.url} target="_blank" className="projectName hoverLink"><i className="fab fa-github"></i> {project.name}</a>
-                    <span className="index">{index + 1}</span>
+                    <span className="index">#{index + 1}</span>
                   </div>
                   <div className="projectBy">
                       <a href={`https://github.com/${project.owner.login}`} className="hoverLink"><LazyLoadImage effect="blur" src={project.owner.avatar_url} className={`avatar`} alt={`avatar`} width={`25px`} height={`auto`} /> {project.owner.login}</a>
@@ -144,10 +144,13 @@ const Projects = () => {
                     if (topic == `sass` || topic == `SCSS`) {return <i key={topic} className="fab fa-sass"></i>};
                     if (topic == `javascript`) {return <i key={topic} className="fab fa-js-square"></i>};
                     if (topic == `angular`) {return <i key={topic} className="fab fa-angular"></i>};
+                    if (topic == `discord`) {return <i key={topic} className="fab fa-discord"></i>};
+                    if (topic == `node`) {return <i key={topic} className="fab fa-node-js"></i>};
+                    if (topic == `sql`) {return <i key={topic} className="fab fa-database"></i>};
                     if (topic == `react`) {return <i key={topic} className="fab fa-react"></i>};
                     if (topic == `php`) {return <i key={topic} className="fab fa-php"></i>};
                   })}</div>
-                  {/* <div className="footer"></div> */}
+                  {/* <div className="stars">{project.st} <i className="fas fa-star"></i></div> */}
                 </div>
               </div>
             )
