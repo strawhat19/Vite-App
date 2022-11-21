@@ -139,13 +139,13 @@ const Projects = () => {
                 </div>
                 <div className="projectFooter">
                   <div className="topics">{project.topics.length > 0 && project.topics.map((topic: any) => {
-                    if (topic == `css` || topic == `CSS`) {return <i className="fab fa-css3-alt"></i>};
-                    if (topic == `html` || topic == `HTML`) {return <i className="fab fa-html5"></i>};
-                    if (topic == `sass` || topic == `SCSS`) {return <i className="fab fa-sass"></i>};
-                    if (topic == `javascript`) {return <i className="fab fa-js-square"></i>};
-                    if (topic == `angular`) {return <i className="fab fa-angular"></i>};
-                    if (topic == `react`) {return <i className="fab fa-react"></i>};
-                    if (topic == `php`) {return <i className="fab fa-php"></i>};
+                    if (topic == `css` || topic == `CSS`) {return <i key={topic} className="fab fa-css3-alt"></i>};
+                    if (topic == `html` || topic == `HTML`) {return <i key={topic} className="fab fa-html5"></i>};
+                    if (topic == `sass` || topic == `SCSS`) {return <i key={topic} className="fab fa-sass"></i>};
+                    if (topic == `javascript`) {return <i key={topic} className="fab fa-js-square"></i>};
+                    if (topic == `angular`) {return <i key={topic} className="fab fa-angular"></i>};
+                    if (topic == `react`) {return <i key={topic} className="fab fa-react"></i>};
+                    if (topic == `php`) {return <i key={topic} className="fab fa-php"></i>};
                   })}</div>
                   {/* <div className="footer"></div> */}
                 </div>
