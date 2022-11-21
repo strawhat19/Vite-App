@@ -16,7 +16,7 @@ const Projects = () => {
   let [mode, setMode] = useState(import.meta.env.MODE);
   let updateProjects = (projects: any) => setProjects(projects);
   let transitionHeader = () => window.scrollY > 0 ? setShow(true) : setShow(false);
-  let [projects, setProjects] = useState<any>(JSON.parse(localStorage.getItem(`user`) as any).projects || []);
+  let [projects, setProjects] = useState<any>(JSON.parse(localStorage.getItem(`projects`) as any) || []);
 
   function formatDate(date: any) {
     let hours = date.getHours();
@@ -45,7 +45,6 @@ const Projects = () => {
       // Get Github Info
       const github = await response.json();
       const githubRepos = await responseRepos.json();
-      console.log(`Github Repos`, githubRepos.sort((a: any, b: any) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()));
       const { name, html_url, bio, blog, avatar_url, login, public_repos, repos_url, starred_url, followers, following } = github;
       githubRepos.sort((a: any, b: any) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()).map((repo: any) => {
         const { name, html_url, created_at, owner, topics, license, updated_at, deployments_url, language, homepage, description } = repo;
@@ -55,20 +54,25 @@ const Projects = () => {
       const user = { name, url: html_url, bio, projects: repositories.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime()), website: blog, avatar: avatar_url, login, repoLink: repos_url, repoNum: public_repos, starred: starred_url, followers, following, lastUpdated: formatDate(new Date()) };
 
       updateProjects(user.projects);
+      console.log(`Updated Projects`, user.projects);
       localStorage.setItem(`user`, JSON.stringify(user));
+      localStorage.setItem(`projects`, JSON.stringify(user.projects));
     };
+  }
+
+  const capitalizeAllWords = (string: any) => {
+    if(string != null || string != undefined) {
+        return string.replace(`  `, ` `).split(` `).map((word: any) => word?.charAt(0)?.toUpperCase() + word?.slice(1).toLowerCase()).join(` `);
+    }
   }
   
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem(`user`) as any) || [];
     if (updateTimer == 0 || pageChanged) {
       setUpdateTimer(updateTimer++);
       
-      if (user.length == 0 || formatDate(new Date()).split(` `)[0] != user.lastUpdated.split(` `)[0]) {
+      if (projects.length == 0) {
         getGithubData();
-        console.log(`Projects New`, projects);
       } else {
-        console.log(`Github User`, user);
         console.log(`Projects`, projects);
       };
     }
@@ -80,7 +84,7 @@ const Projects = () => {
       })
     });
 
-  }, [updateTimer, setUpdateTimer]);
+  }, []);
 
   return (
     <Suspense>
@@ -117,19 +121,33 @@ const Projects = () => {
         {mode == `production` && <Icons />}
         <h1>Projects</h1>
         <div className="projects">
-          {JSON.parse(localStorage.getItem(`user`) as any).projects.length > 0 && JSON.parse(localStorage.getItem(`user`) as any).projects.map((project: any, index: any) => {
+          {projects.length > 0 && projects.map((project: any, index: any) => {
             return (
               <div key={project.name} className="project">
                 <div className="projectHeader">
-                  <a href={project.url} target="_blank" className="projectName hoverLink"><i className="fas fa-project-diagram"></i> {project.name}</a>
-                  <span className="index">{index + 1}</span>
+                  <div className="headerTop">
+                    <a href={project.url} target="_blank" className="projectName hoverLink"><i className="fab fa-github"></i> {project.name}</a>
+                    <span className="index">{index + 1}</span>
+                  </div>
                   <div className="projectBy">
-                    <a href={`https://github.com/${project.owner.login}`} className="hoverLink"><LazyLoadImage effect="blur" src={project.owner.avatar_url} className={`avatar`} alt={`avatar`} width={`25px`} height={`auto`} /> {project.owner.login}</a>
-                    <span className="projectDate">{formatDate(new Date(project.date))}</span>
+                      <a href={`https://github.com/${project.owner.login}`} className="hoverLink"><LazyLoadImage effect="blur" src={project.owner.avatar_url} className={`avatar`} alt={`avatar`} width={`25px`} height={`auto`} /> {project.owner.login}</a>
+                      <span className="projectDate">{formatDate(new Date(project.date))}</span>
                   </div>
                 </div>
                 <div className="projectContent">
                   {project.description}
+                </div>
+                <div className="projectFooter">
+                  <div className="topics">{project.topics.length > 0 && project.topics.map((topic: any) => {
+                    if (topic == `css` || topic == `CSS`) {return <i className="fab fa-css3-alt"></i>};
+                    if (topic == `html` || topic == `HTML`) {return <i className="fab fa-html5"></i>};
+                    if (topic == `sass` || topic == `SCSS`) {return <i className="fab fa-sass"></i>};
+                    if (topic == `javascript`) {return <i className="fab fa-js-square"></i>};
+                    if (topic == `angular`) {return <i className="fab fa-angular"></i>};
+                    if (topic == `react`) {return <i className="fab fa-react"></i>};
+                    if (topic == `php`) {return <i className="fab fa-php"></i>};
+                  })}</div>
+                  {/* <div className="footer"></div> */}
                 </div>
               </div>
             )

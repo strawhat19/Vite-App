@@ -7,6 +7,7 @@ import Banner from '../components/banner/banner';
 
 const About = () => {
   let [show, setShow] = useState(false);
+  let [projects, setProjects] = useState<any>([]);
   let [updateTimer, setUpdateTimer] = useState(0);
   let [pageChanged, setPageChanged] = useState(false);
   let [mode, setMode] = useState(import.meta.env.MODE);
@@ -23,7 +24,7 @@ const About = () => {
           transitionHeader();
       })
     });
-  }, [updateTimer, setUpdateTimer]);
+  }, []);
 
   return (
     <Suspense>
