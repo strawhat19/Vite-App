@@ -56,7 +56,7 @@ const Piratechs = () => {
         </header>
       }
       {mode == `production` && <Banner />}
-      <main className={`App${mode == 'production' ? 'content' : ''}`} id="App">
+      <main className={`App ${mode == 'production' ? 'content' : ''}`} id="App">
         {mode == `production` && <Icons />}
         <h1>Piratechs</h1>
       </main>

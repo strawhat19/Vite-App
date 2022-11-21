@@ -4,7 +4,6 @@ import Banner from '../components/banner/banner';
 import Icons from '../components/icons/icons';
 import viteLogo from '/vite.svg';
 import '../global.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 enum CustomDate {
   date,
@@ -114,7 +113,7 @@ const Projects = () => {
         </header>
       }
       {mode == `production` && <Banner />}
-      <main className={`App${mode == 'production' ? 'content' : ''}`} id="App">
+      <main className={`App ${mode == 'production' ? 'content' : ''}`} id="App">
         {mode == `production` && <Icons />}
         <h1>Projects</h1>
         <div className="projects">
