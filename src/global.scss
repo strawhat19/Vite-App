@@ -43,6 +43,7 @@
     --secondary: #3c3c3c;
     --piratechs: #2b4261;
     --softBlack2: #636363;
+    --piratechsDark: #10141d;
     --main: rgb(0, 216, 255);
     --authGlass: rgba(0, 0, 0, 0.05);
     --blackGlass: rgba(0, 0, 0, 0.75);
@@ -65,7 +66,8 @@ body {
   min-height: 100vh;
   position: relative;
   place-items: center;
-  background: var(--steel);
+  background: var(--piratechsDark);
+  // background: var(--steel);
 }
 
 a {
@@ -205,7 +207,7 @@ header {
     justify-content: center;
     transition: var(--transition);
     animation: fadeIn 1000ms ease-in-out;
-    background: linear-gradient(var(--softBlack2) 0%, transparent);
+    // background: linear-gradient(var(--softBlack2) 0%, transparent);
     .inner {
         width: 93%;
         display: flex;

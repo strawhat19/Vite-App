@@ -5,10 +5,6 @@ import Icons from '../components/icons/icons';
 import viteLogo from '/vite.svg';
 import '../global.scss';
 
-enum CustomDate {
-  date,
-}
-
 const Projects = () => {
   let [show, setShow] = useState(false);
   let [updateTimer, setUpdateTimer] = useState(0);
@@ -58,12 +54,6 @@ const Projects = () => {
       localStorage.setItem(`user`, JSON.stringify(user));
       localStorage.setItem(`projects`, JSON.stringify(user.projects));
     };
-  }
-
-  const capitalizeAllWords = (string: any) => {
-    if(string != null || string != undefined) {
-        return string.replace(`  `, ` `).split(` `).map((word: any) => word?.charAt(0)?.toUpperCase() + word?.slice(1).toLowerCase()).join(` `);
-    }
   }
   
   useEffect(() => {
