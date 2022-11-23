@@ -13,7 +13,6 @@ const Contact = () => {
   const { pagename, setPageName, capitalizeAllWords } = useContext(StateContext);
   
   useEffect(() => {
-    if (pagename) console.log(pagename);
     if (updateTimer == 0 || pageChanged) {
       setUpdateTimer(updateTimer++);
     }

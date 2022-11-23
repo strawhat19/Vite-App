@@ -58,7 +58,6 @@ const Projects = () => {
   }
   
   useEffect(() => {
-    if (pagename) console.log(pagename);
     if (updateTimer == 0 || pageChanged) {
       setUpdateTimer(updateTimer++);
       
