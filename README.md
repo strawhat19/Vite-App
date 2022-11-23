@@ -10,7 +10,7 @@
 ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
 
-![Screenshot of Application](./src/assets/v02.png)
+![Screenshot of Application](./src/assets/v03.png)
 
 ## About
 A simple app made with Vite, React, React Router, React Router DOM, React Lazy, React Suspense, TypeScript, Context API, and SASS. Will implement Firebase for Auth, Storage, and Database purposes, as well as some Server Side Rendering soon.

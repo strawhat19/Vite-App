@@ -13,6 +13,7 @@ const Piratechs = () => {
   const { pagename, setPageName, capitalizeAllWords } = useContext(StateContext);
   
   useEffect(() => {
+    if (pagename) console.log(pagename);
     if (updateTimer == 0 || pageChanged) {
       setUpdateTimer(updateTimer++);
     }
@@ -25,7 +26,7 @@ const Piratechs = () => {
         {mode == `production` && <Banner bannerBG={piratechsBanner} />}
         <main className={`App ${mode == 'production' ? 'content' : ''}`} id="App">
           {mode == `production` && <Icons />}
-          <h1>{capitalizeAllWords(pagename)}</h1>
+          <h1>Piratechs</h1>
         </main>
       </Suspense>
     </StateContext.Provider>

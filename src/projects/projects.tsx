@@ -58,6 +58,7 @@ const Projects = () => {
   }
   
   useEffect(() => {
+    if (pagename) console.log(pagename);
     if (updateTimer == 0 || pageChanged) {
       setUpdateTimer(updateTimer++);
       
@@ -76,7 +77,7 @@ const Projects = () => {
         {mode == `production` && <Banner bannerBG={piratechsBanner} />}
         <main className={`App ${mode == 'production' ? 'content' : ''}`} id="App">
           {mode == `production` && <Icons />}
-          <h1>{capitalizeAllWords(pagename)}</h1>
+          <h1>Projects</h1>
           <div className="projects">
             {projects.length > 0 && projects.map((project: any, index: any) => {
               if (project.topics.length > 0) return (

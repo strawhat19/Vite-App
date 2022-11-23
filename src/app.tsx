@@ -1,16 +1,15 @@
 import piratechsBanner from './assets/PiratechsBanner.jpeg';
 import { Suspense, useEffect, useState } from 'react';
+export const StateContext = createContext<any>({});
 import Header from './components/header/header';
 import Banner from './components/banner/banner';
 import Piratechs from './piratechs/piratechs';
 import Icons from './components/icons/icons';
 import Projects from './projects/projects';
 import Contact from './contact/contact';
+import { createContext } from 'react';
 import About from './about/about';
 import './global.scss';
-
-import { createContext } from 'react';
-export const StateContext = createContext<any>({});
 
 const App = () => {
   let [updateTimer, setUpdateTimer] = useState(0);
@@ -40,33 +39,27 @@ const App = () => {
 
   return (
     <StateContext.Provider value={{pagename, setPageName, capitalizeAllWords}}>
-     {/* <Router> */}
-       {/* <Routes> */}
-        {/* <Route path={`/`} element={ */}
-          <Suspense>
-            <Header />
-            <Banner bannerBG={piratechsBanner} />
-            <main className="App content" id="App">
-              <Icons />
-              {homePaths.includes(pagename) && (
-                <div className='home'>
-                  <h1>Home</h1>
-                </div>
-              )}
-              {aboutPaths.includes(pagename) && <About />}
-              {projectPaths.includes(pagename) && <Projects />}
-              {contactPaths.includes(pagename) && <Contact />}
-              {piratechsPaths.includes(pagename) && <Piratechs />}
-              <div className="spacer">
-                <button onClick={(e) => setUpdateTimer((updateTimer) => updateTimer + 1)}>
-                  {updateTimer != 0 ? `State changed ${updateTimer} times` : `State reset to ${updateTimer}`}
-                </button>
-              </div>
-            </main>
-          </Suspense>
-        
-       {/* </Routes> */}
-     {/* </Router> */}
+      <Suspense>
+        <Header />
+        <Banner bannerBG={piratechsBanner} />
+        <main className="App content" id="App">
+          <Icons />
+          {homePaths.includes(pagename) && (
+            <div className='home'>
+              <h1>Home</h1>
+            </div>
+          )}
+          {aboutPaths.includes(pagename) && <About />}
+          {projectPaths.includes(pagename) && <Projects />}
+          {contactPaths.includes(pagename) && <Contact />}
+          {piratechsPaths.includes(pagename) && <Piratechs />}
+          <div className="spacer">
+            <button onClick={(e) => setUpdateTimer((updateTimer) => updateTimer + 1)}>
+              {updateTimer != 0 ? `State changed ${updateTimer} times` : `State reset to ${updateTimer}`}
+            </button>
+          </div>
+        </main>
+      </Suspense>
     </StateContext.Provider>
   )
 }
