@@ -20,6 +20,8 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/vite-app" element={<App />} errorElement={<App />} />
+      <Route path="new" element={<>New</>} errorElement={<>New</>} />
+      <Route path="/new" element={<>New</>} errorElement={<>New</>} />
       <Route path="vite-app/new" element={<>New</>} errorElement={<>New</>} />
     </>
   )
