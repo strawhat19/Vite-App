@@ -1,1 +1,0 @@
-import{c as t,j as r,r as o}from"./client.2926a0e8.js";import{P as e}from"./app.e18f0c37.js";import"./piratechs.8239b6ed.js";import"./contact.992e247a.js";import"./about.72c232e7.js";t(document.getElementById("root")).render(r(o.exports.StrictMode,{children:r(e,{})}));
