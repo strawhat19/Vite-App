@@ -1,4 +1,5 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import piratechsBanner from '../assets/PiratechsBanner.jpeg';
 import { Suspense, useEffect, useState } from 'react';
 import Banner from '../components/banner/banner';
 import Icons from '../components/icons/icons';
@@ -106,7 +107,7 @@ const Projects = () => {
           </div>
         </header>
       }
-      {mode == `production` && <Banner />}
+      {mode == `production` && <Banner bannerBG={piratechsBanner} />}
       <main className={`App ${mode == 'production' ? 'content' : ''}`} id="App">
         {mode == `production` && <Icons />}
         <h1>Projects</h1>

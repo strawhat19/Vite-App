@@ -1,12 +1,11 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import bannerImg from '../../assets/PiratechsBanner.jpeg';
 import { Suspense } from 'react';
 
-const Banner = () => {
+const Banner = (props: any) => {
     return (
         <Suspense>
             <div className='banner'>
-                <LazyLoadImage effect="blur" src={bannerImg} id={`bannerImg`} className={`bannerImg`} alt={`Banner`} width={`100%`} height={`auto`} />
+                <LazyLoadImage effect="blur" src={props.bannerBG} id={`bannerImg`} className={`bannerImg`} alt={`Banner`} width={`100%`} height={`auto`} />
             </div>
         </Suspense>
     )

@@ -84,6 +84,12 @@ h1 {
   line-height: 1.1;
 }
 
+.homeLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 button {
   font-family: inherit;
   border-radius: 8px;
