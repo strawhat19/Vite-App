@@ -1,8 +1,10 @@
 # Vite App
 
-![example event parameter](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?event=push)
-[![Build Status](https://travis-ci.org/strawhat19/Vite-App.svg?branch=gh-pages)](https://github.com/strawhat19/Vite-App)
-[![License Badge: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+![License](https://img.shields.io/github/license/strawhat19/Vite-App)
+![State](https://img.shields.io/github/deployments/strawhat19/Vite-App/github-pages)
+![Total Lines](https://img.shields.io/tokei/lines/github/strawhat19/Vite-App)
+![Repo Size](https://img.shields.io/github/repo-size/strawhat19/Vite-App)
+![Release](https://img.shields.io/github/v/release/strawhat19/Vite-App)
 
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
