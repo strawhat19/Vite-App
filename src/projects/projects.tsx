@@ -4,6 +4,7 @@ import piratechsBanner from '../assets/PiratechsBanner.jpeg';
 import Banner from '../components/banner/banner';
 import Icons from '../components/icons/icons';
 import { StateContext } from '../app';
+import viteLogo from '/vite.svg';
 import '../global.scss';
 
 const Projects = () => {
@@ -11,8 +12,8 @@ const Projects = () => {
   let [updateTimer, setUpdateTimer] = useState(0);
   let [pageChanged, setPageChanged] = useState(false);
   let [mode, setMode] = useState(import.meta.env.MODE);
-  const { pagename, setPageName, capitalizeAllWords } = useContext(StateContext);
   let updateProjects = (projects: any) => setProjects(projects);
+  const { pagename, setPageName, capitalizeAllWords } = useContext(StateContext);
   let transitionHeader = () => window.scrollY > 0 ? setShow(true) : setShow(false);
   let [projects, setProjects] = useState<any>(JSON.parse(localStorage.getItem(`projects`) as any) || []);
 
@@ -66,6 +67,7 @@ const Projects = () => {
         getGithubData();
       } else {
         console.log(`Projects`, projects);
+        if (pagename) console.log(`Pagename`, pagename);
       };
     }
     
@@ -80,11 +82,38 @@ const Projects = () => {
 
   return (
     <Suspense>
-      {/* <Header /> */}
+      {mode != `development` && 
+        <header className={show ? `scrolledHeader` : `topHeader`}>
+          <div className="inner">
+              <div className="navigation">
+                  <a title="Home" className="homeLink" href="../">
+                      <LazyLoadImage effect="blur" src={viteLogo} id={`logo`} className={`logo`} alt={`logo`} width={`100px`} height={`auto`} />
+                  </a>
+                  <ul>
+                      <li className="navigation-tab">
+                          <a className="current active hoverLink" href="../">Home</a>
+                      </li>
+                      <li className="navigation-tab">
+                          <a className="hoverLink" href="../about">About</a>
+                      </li>
+                      <li className="navigation-tab">
+                          <a className="hoverLink" href="../projects">Projects</a>
+                      </li>
+                      <li className="navigation-tab">
+                          <a className="hoverLink" href="../contact">Contact</a>
+                      </li>
+                      <li className="navigation-tab">
+                          <a className="hoverLink" href="../piratechs">Piratechs</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+        </header>
+      }
       {mode == `production` && <Banner bannerBG={piratechsBanner} />}
       <main className={`App ${mode == 'production' ? 'content' : ''}`} id="App">
         {mode == `production` && <Icons />}
-        <h1>{capitalizeAllWords(pagename)}</h1>
+        <h1>Projects</h1>
         <div className="projects">
           {projects.length > 0 && projects.map((project: any, index: any) => {
             if (project.topics.length > 0) return (
@@ -115,7 +144,6 @@ const Projects = () => {
                     if (topic == `react`) {return <i key={topic} className="fab fa-react"></i>};
                     if (topic == `php`) {return <i key={topic} className="fab fa-php"></i>};
                   })}</div>
-                  {/* <div className="stars">{project.st} <i className="fas fa-star"></i></div> */}
                 </div>
               </div>
             )
