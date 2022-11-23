@@ -19,14 +19,10 @@ A simple app made with Vite, React, React Router, React Router DOM, React Lazy, 
 
 ## Table of Contents  
 * [About](#about)
-* [Usage](#usage)
 * [Installation](#installation)
+* [Usage](#usage)
 * [Licensing](#licensing)
 * [Questions](#questions)
-
-## Usage
-You can view the deployed application at https://strawhat19.github.io/Vite-App/
-You can view the code at https://github.com/strawhat19/Vite-App
 
 ## Installation
 ```
@@ -34,6 +30,52 @@ git clone git@github.com:strawhat19/Vite-App.git
 cd Vite-App/
 npm install
 npm run dev
+```
+
+## Usage
+You can view the deployed application at https://strawhat19.github.io/Vite-App/
+
+You can view the code at https://github.com/strawhat19/Vite-App
+
+### Add a page
+```
+In the src/ directory add a new folder (/newpage)
+Place an index.html inside it (/newpage/index.html)
+Add necessary imports & Change Title (<title>New Page</title>)
+
+Write the body
+<body>
+      <div id="root"></div>
+      <script type="module" src="./server.tsx"></script>
+</body>
+      
+Add the necessary entry file (/newpage/server.tsx)
+
+import * as React from 'react';
+import NewPage from './newpage';
+import * as ReactDOM from 'react-dom/client';
+
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <React.StrictMode>
+    <NewPage />
+  </React.StrictMode>
+)
+
+Add the necessary render file or component (/newpage/newpage.tsx)
+Make the component with necessary imports & shared state as needed
+
+Go to vite.config.ts
+Add new input
+
+Go to server.tsx (main one in /src)
+Add route for new page
+
+Go to app.tsx
+Add relative paths for this page
+Conditionally render the component in dev
+
+Go to /components/header
+Add new link to both header and pageheader
 ```
 
 ## Licensing

@@ -17,6 +17,7 @@ export default defineConfig({
       input: {
         app: resolve(root, `index.html`),
         about: resolve(root, `about`, `index.html`),
+        // error404: resolve(root, `error404`, `index.html`),
         projects: resolve(root, `projects`, `index.html`),
         contact: resolve(root, `contact`, `index.html`),
         piratechs: resolve(root, `piratechs`, `index.html`),

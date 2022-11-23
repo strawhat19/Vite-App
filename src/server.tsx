@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <Routes>
         <Route path={site} element={<App />} errorElement={<><Header />404 Page Not Found</>} />
         <Route path={`${site}/about`} element={<><About /></>} />
-        <Route path={`${site}/404`} element={<><Header />404 Page Not Found</>} />
+        <Route path={`${site}/error404`} element={<><Header />404 Page Not Found</>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
