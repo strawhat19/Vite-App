@@ -45,7 +45,7 @@ const Header = (props: any) => {
                                 <a className="current active hoverLink" href="./">Home</a>
                             </li>
                             <li className="navigation-tab">
-                                <a className="hoverLink" href="./about">About</a>
+                                <a className="hoverLink" href="./about">About Page</a>
                             </li>
                             <li className="navigation-tab">
                                 <a className="hoverLink" href="./about" onClick={(e) => (devEnv || mode == `development`) && navigateTo(`about`, e)}>About</a>
