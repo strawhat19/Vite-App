@@ -1,5 +1,4 @@
 import piratechsBanner from './assets/PiratechsBanner.jpeg';
-// import { StateContext } from './contexts/StateContext';
 import { Suspense, useEffect, useState } from 'react';
 import Header from './components/header/header';
 import Banner from './components/banner/banner';
@@ -11,7 +10,6 @@ import About from './about/about';
 import './global.scss';
 
 import { createContext } from 'react';
-import { Route, Router, Routes } from 'react-router';
 export const StateContext = createContext<any>({});
 
 const App = () => {

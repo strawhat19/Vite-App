@@ -13,9 +13,12 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path={site} element={<App />} errorElement={<>404 Page Not Found</>} />
+        <Route path={site} element={<App />} errorElement={<><Header />404 Page Not Found</>} />
+        <Route path={`404`} element={<><Header />404 Page Not Found</>} />
+        <Route path={`/404`} element={<><Header />404 Page Not Found</>} />
+        <Route path={`/404/`} element={<><Header />404 Page Not Found</>} />
         <Route path={`${site}/404`} element={<><Header />404 Page Not Found</>} />
-        <Route path={`${site}/new`} element={<>New</>} />
+        <Route path={`${site}/404/`} element={<><Header />404 Page Not Found</>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
