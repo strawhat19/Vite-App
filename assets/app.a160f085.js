@@ -1,4 +1,4 @@
-import{R as I,r as l,j as u,a as C,F as E,c as Z,A as ee,H as k,b as te}from"./client.193d2084.js";/**
+import{R as I,r as l,j as u,a as C,F as E,c as Z,A as ee,H as k,b as te}from"./client.e36c3b06.js";/**
  * @remix-run/router v1.0.3
  *
  * Copyright (c) Remix Software Inc.
@@ -25,4 +25,4 @@ import{R as I,r as l,j as u,a as C,F as E,c as Z,A as ee,H as k,b as te}from"./c
  * LICENSE.md file in the root directory of this source tree.
  *
  * @license MIT
- */function Xe(e){let{basename:t,children:n,window:r}=e,o=l.exports.useRef();o.current==null&&(o.current=re({window:r,v5Compat:!0}));let i=o.current,[a,s]=l.exports.useState({action:i.action,location:i.location});return l.exports.useLayoutEffect(()=>i.listen(s),[i]),u(Je,{basename:t,children:n,location:a.location,navigationType:a.action,navigator:i})}var J;(function(e){e.UseScrollRestoration="useScrollRestoration",e.UseSubmitImpl="useSubmitImpl",e.UseFetcher="useFetcher"})(J||(J={}));var K;(function(e){e.UseFetchers="useFetchers",e.UseScrollRestoration="useScrollRestoration"})(K||(K={}));let D="/vite-app";Z(document.getElementById("root")).render(u(l.exports.StrictMode,{children:u(Xe,{children:C(Ke,{children:[u(P,{path:D,element:u(ee,{}),errorElement:C(E,{children:[u(k,{}),"404 Page Not Found"]})}),u(P,{path:`${D}/about`,element:u(E,{children:u(te,{})})}),u(P,{path:`${D}/404`,element:C(E,{children:[u(k,{}),"404 Page Not Found"]})})]})})}));
+ */function Xe(e){let{basename:t,children:n,window:r}=e,o=l.exports.useRef();o.current==null&&(o.current=re({window:r,v5Compat:!0}));let i=o.current,[a,s]=l.exports.useState({action:i.action,location:i.location});return l.exports.useLayoutEffect(()=>i.listen(s),[i]),u(Je,{basename:t,children:n,location:a.location,navigationType:a.action,navigator:i})}var J;(function(e){e.UseScrollRestoration="useScrollRestoration",e.UseSubmitImpl="useSubmitImpl",e.UseFetcher="useFetcher"})(J||(J={}));var K;(function(e){e.UseFetchers="useFetchers",e.UseScrollRestoration="useScrollRestoration"})(K||(K={}));let D="/vite-app";Z(document.getElementById("root")).render(u(l.exports.StrictMode,{children:u(Xe,{children:C(Ke,{children:[u(P,{path:D,element:u(ee,{}),errorElement:C(E,{children:[u(k,{}),"404 Page Not Found"]})}),u(P,{path:`${D}/about`,element:u(E,{children:u(te,{})})}),u(P,{path:`${D}/error404`,element:C(E,{children:[u(k,{}),"404 Page Not Found"]})})]})})}));
