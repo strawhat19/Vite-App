@@ -1,5 +1,5 @@
 import piratechsBanner from './assets/PiratechsBanner.jpeg';
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useState, createContext } from 'react';
 export const StateContext = createContext<any>({});
 import Header from './components/header/header';
 import Banner from './components/banner/banner';
@@ -7,7 +7,6 @@ import Piratechs from './piratechs/piratechs';
 import Icons from './components/icons/icons';
 import Projects from './projects/projects';
 import Contact from './contact/contact';
-import { createContext } from 'react';
 import About from './about/about';
 import './global.scss';
 
