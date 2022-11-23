@@ -1,9 +1,9 @@
+import { Suspense, useContext, useEffect, useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import piratechsBanner from '../assets/PiratechsBanner.jpeg';
-import { Suspense, useEffect, useState } from 'react';
 import Banner from '../components/banner/banner';
 import Icons from '../components/icons/icons';
-import viteLogo from '/vite.svg';
+import { StateContext } from '../app';
 import '../global.scss';
 
 const Projects = () => {
@@ -11,6 +11,7 @@ const Projects = () => {
   let [updateTimer, setUpdateTimer] = useState(0);
   let [pageChanged, setPageChanged] = useState(false);
   let [mode, setMode] = useState(import.meta.env.MODE);
+  const { pagename, setPageName, capitalizeAllWords } = useContext(StateContext);
   let updateProjects = (projects: any) => setProjects(projects);
   let transitionHeader = () => window.scrollY > 0 ? setShow(true) : setShow(false);
   let [projects, setProjects] = useState<any>(JSON.parse(localStorage.getItem(`projects`) as any) || []);
@@ -79,38 +80,11 @@ const Projects = () => {
 
   return (
     <Suspense>
-      {mode != `development` && 
-        <header className={show ? `scrolledHeader` : `topHeader`}>
-          <div className="inner">
-              <div className="navigation">
-                  <a title="Home" className="homeLink" href="../">
-                      <LazyLoadImage effect="blur" src={viteLogo} id={`logo`} className={`logo`} alt={`logo`} width={`100px`} height={`auto`} />
-                  </a>
-                  <ul>
-                      <li className="navigation-tab">
-                          <a className="current active hoverLink" href="../">Home</a>
-                      </li>
-                      <li className="navigation-tab">
-                          <a className="hoverLink" href="../about">About</a>
-                      </li>
-                      <li className="navigation-tab">
-                          <a className="hoverLink" href="../projects">Projects</a>
-                      </li>
-                      <li className="navigation-tab">
-                          <a className="hoverLink" href="../contact">Contact</a>
-                      </li>
-                      <li className="navigation-tab">
-                          <a className="hoverLink" href="../piratechs">Piratechs</a>
-                      </li>
-                  </ul>
-              </div>
-          </div>
-        </header>
-      }
+      {/* <Header /> */}
       {mode == `production` && <Banner bannerBG={piratechsBanner} />}
       <main className={`App ${mode == 'production' ? 'content' : ''}`} id="App">
         {mode == `production` && <Icons />}
-        <h1>Projects</h1>
+        <h1>{capitalizeAllWords(pagename)}</h1>
         <div className="projects">
           {projects.length > 0 && projects.map((project: any, index: any) => {
             if (project.topics.length > 0) return (

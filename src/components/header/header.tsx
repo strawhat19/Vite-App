@@ -1,16 +1,18 @@
+import { Suspense, useContext, useEffect, useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { Suspense, useEffect, useState } from 'react';
+import { StateContext } from '../../app';
 import viteLogo from '/vite.svg';
 
 const Header = (props: any) => {
 
+    let state = useContext(StateContext);
     let [show, setShow] = useState(false);
     let [updateTimer, setUpdateTimer] = useState(0);
     let [pageChanged, setPageChanged] = useState(false);
     let [mode, setMode] = useState(import.meta.env.MODE);
+    const {pagename, setPageName} = useContext(StateContext);
     let [devEnv, setDevEnv] = useState(window.location.hostname.includes(`0`));
     let transitionHeader = () => window.scrollY > 0 ? setShow(true) : setShow(false);
-    let [pagename, setPageName] = useState(window.location.pathname.replace(`/vite-app/`, ``));
 
     let navigateTo = (page:any, clickEvent:any) => {
         clickEvent.preventDefault();
@@ -21,23 +23,18 @@ const Header = (props: any) => {
     }
 
     useEffect(() => {
-        if (updateTimer == 0 || pageChanged) {
-          setUpdateTimer(updateTimer++);
-          if (devEnv || mode == `development`) document.title = `Vite App Dev`;
-          if (devEnv && mode == `production`) document.title = `Vite App Build`;
-        };
-        
+        console.log(`pagename`, pagename, `state`, state.pagename);
         window.addEventListener(`scroll`, event => {
           transitionHeader();
           return () => window.removeEventListener(`scroll`, event => {
               transitionHeader();
           })
         });
-      }, [ ]);
+      }, [pagename]);
 
     return (
         <Suspense>
-            <header className={`header ${mode} ${show ? `scrolledHeader` : `topHeader`}`}>
+            <header className={`mainheader ${mode} ${show ? `scrolledHeader` : `topHeader`}`}>
                 <div className="inner">
                     <div className="navigation">
                         <a title="Home" className="homeLink" href="./">
@@ -55,7 +52,7 @@ const Header = (props: any) => {
                                 <a className="hoverLink" href="./projects" onClick={(e) => (devEnv || mode == `development`) && navigateTo(`projects`, e)}>Projects</a>
                             </li>
                             <li className="navigation-tab">
-                                <a className="hoverLink" href="./contact"  onClick={(e) => (devEnv || mode == `development`) && navigateTo(`contact`, e)}>Contact</a>
+                                <a className="hoverLink" href="./contact" onClick={(e) => (devEnv || mode == `development`) && navigateTo(`contact`, e)}>Contact</a>
                             </li>
                             <li className="navigation-tab">
                                 <a className="hoverLink" href="./piratechs" onClick={(e) => (devEnv || mode == `development`) && navigateTo(`piratechs`, e)}>Piratechs</a>
