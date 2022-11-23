@@ -23,7 +23,6 @@ const Header = (props: any) => {
     }
 
     useEffect(() => {
-        console.log(`pagename`, pagename, `state`, state.pagename);
         window.addEventListener(`scroll`, event => {
           transitionHeader();
           return () => window.removeEventListener(`scroll`, event => {

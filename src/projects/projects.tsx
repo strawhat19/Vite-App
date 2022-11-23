@@ -67,7 +67,6 @@ const Projects = () => {
         getGithubData();
       } else {
         console.log(`Projects`, projects);
-        if (pagename) console.log(`Pagename`, pagename);
       };
     }
     
@@ -113,7 +112,7 @@ const Projects = () => {
       {mode == `production` && <Banner bannerBG={piratechsBanner} />}
       <main className={`App ${mode == 'production' ? 'content' : ''}`} id="App">
         {mode == `production` && <Icons />}
-        <h1>Projects</h1>
+        <h1>{capitalizeAllWords(pagename)}</h1>
         <div className="projects">
           {projects.length > 0 && projects.map((project: any, index: any) => {
             if (project.topics.length > 0) return (
